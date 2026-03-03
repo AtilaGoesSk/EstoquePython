@@ -16,7 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from estoque.views import home, produtos, novo_produto, editar_produto, deletar_produto
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', home, name='home'),
+    path('produtos/', produtos, name='produtos'),
+    path('produtos/novo/', novo_produto, name='novo_produto'),
+    path('produtos/editar/<int:id>/', editar_produto, name='editar_produto'),
+    path('produtos/deletar/<int:id>/', deletar_produto, name='deletar_produto'),
 ]

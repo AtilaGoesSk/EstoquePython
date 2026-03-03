@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}Produtos{% endblock %}
+
+{% block content %}
+
+<div class="container mx-auto">
+
+    <h1 class="text-3xl font-bold mb-8 text-gray-800">Lista de Produtos</h1>
+
+    <!-- Barra superior -->
+    <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+
+        <div class="w-full md:w-1/3">
+            <input type="text"
+                   placeholder="Buscar produto..."
+                   class="w-full px-4 py-2 rounded-md border border-black-300 bg-white placeholder-gray-800 focus:outline-none focus:ring-2 focus:ring-orange-500">
+        </div>
+
+        <a href="{% url 'novo_produto' %}">
+            <button class="bg-orange-600 text-white px-4 py-2 rounded-md hover:bg-orange-700 transition">
+                + Novo Produto
+            </button>
+        </a>
+
+    </div>
+
+    <!-- Tabela -->
+    <div class="overflow-x-auto bg-white rounded-lg shadow">
+        <table class="w-full table-auto">
+
+            <thead>
+                <tr class="bg-gray-200 text-gray-600 uppercase text-sm">
+                    <th class="py-3 px-6 text-left">ID</th>
+                    <th class="py-3 px-6 text-left">Nome</th>
+                    <th class="py-3 px-6 text-left">Preço</th>
+                    <th class="py-3 px-6 text-left">Quantidade</th>
+                    <th class="py-3 px-6 text-center">Ações</th>
+                </tr>
+            </thead>
+
+            <tbody class="text-gray-600 text-sm">
+
+                {% for produto in produtos %}
+                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6">{{ produto.id }}</td>
+                    <td class="py-3 px-6">{{ produto.nome }}</td>
+                    <td class="py-3 px-6">R$ {{ produto.preco }}</td>
+                    <td class="py-3 px-6">{{ produto.quantidade }}</td>
+                    <td class="py-3 px-6 text-center">
+
+                        <div class="flex justify-center gap-3">
+
+                            <a href="{% url 'editar_produto' produto.id %}" 
+                               class="text-blue-500 hover:scale-110 transition">
+                                ✏️
+                            </a>
+
+                            <a href="{% url 'deletar_produto' produto.id %}" 
+                               class="text-red-500 hover:scale-110 transition">
+                                🗑️
+                            </a>
+
+                        </div>
+
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5" class="text-center py-6 text-gray-400">
+                        Nenhum produto cadastrado.
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Novo Produto{% endblock %}
+
+{% block content %}
+
+<div class="max-w-xl mx-auto bg-white rounded-xl shadow p-8">
+
+    <h1 class="text-2xl font-bold mb-6 text-gray-800 text-center">
+        Cadastro de Produto
+    </h1>
+
+    <form method="post" class="space-y-6">
+        {% csrf_token %}
+
+        <!-- Nome -->
+        <div>
+            <label class="block text-gray-700 font-medium mb-1">
+                Nome do produto
+            </label>
+            <input 
+                type="text" 
+                name="nome"
+                maxlength="50"
+                placeholder="Ex: Teclado Mecânico"
+                class="w-full px-4 py-2 rounded-md border placeholder-gray-500 text-gray-900 border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+>
+        </div>
+
+        <!-- Preço -->
+        <div>
+            <label class="block text-gray-700 font-medium mb-1">
+                Preço (R$)
+            </label>
+            <input 
+                type="number" 
+                step="0.01"
+                name="preco"
+                max="999999.99"
+                min="0"
+                placeholder="Ex: 199.90"
+                class="w-full px-4 py-2 rounded-md border placeholder-gray-500 text-gray-900 border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                required
+            >
+        </div>
+
+        <!-- Quantidade -->
+        <div>
+            <label class="block text-gray-700 font-medium mb-1">
+                Quantidade
+            </label>
+            <input 
+                type="number"
+                name="quantidade"
+                max="9999"
+                min="0"
+                placeholder="Ex: 10"
+                class="w-full px-4 py-2 rounded-md border placeholder-gray-500 text-gray-900 border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                required
+            >
+        </div>
+
+        <!-- Botões -->
+        <div class="flex justify-between items-center pt-4">
+
+            <a href="{% url 'produtos' %}" 
+               class="text-gray-600 hover:text-orange-600 transition">
+                ← Voltar
+            </a>
+
+            <button 
+                type="submit"
+                class="bg-orange-600 text-white px-6 py-2 rounded-md hover:bg-orange-700 transition">
+                Salvar Produto
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}
