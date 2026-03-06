@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}Novo Produto{% endblock %}
+
+{% block content %}
+
+<div class="max-w-xl mx-auto bg-white rounded-xl shadow p-8">
+
+    <h1 class="text-2xl font-bold mb-6 text-gray-800 text-center">
+        Cadastro de Fornecedor
+    </h1>
+
+    <form method="post" class="space-y-6">
+        {% csrf_token %}
+
+        <!-- Nome -->
+        <div>
+            <label class="block text-gray-700 font-medium mb-1">
+                Nome do fornecedor
+            </label>
+            <input 
+                type="text" 
+                name="nome"
+                required
+                maxlength="100"
+                placeholder="Ex: Fornecedor XYZ"
+                class="w-full px-4 py-2 rounded-md border placeholder-gray-500 text-gray-900 border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                value="{{ fornecedor.nome|default:'' }}"
+            >
+        </div>
+        {% csrf_token %}
+
+        <!-- email -->
+        <div>
+            <label class="block text-gray-700 font-medium mb-1">
+                Email
+            </label>
+            <input 
+                type="email"
+                name="email"
+                required
+                placeholder="Ex: fornecedor@xyz.com"
+                class="w-full px-4 py-2 rounded-md border placeholder-gray-500 text-gray-900 border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                value="{{ fornecedor.email|default:'' }}"
+            >
+        </div>
+        <!-- Telefone -->
+        <div>
+            <label class="block text-gray-700 font-medium mb-1">
+                Telefone
+            </label>
+            <input 
+                type="number" 
+                name="telefone"
+                max="999999999999"
+                maxlength="11"
+                min="0"
+                placeholder="Ex: 7199999-9999"
+                class="w-full px-4 py-2 rounded-md border placeholder-gray-500 text-gray-900 border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                required
+                value="{{ fornecedor.telefone|default:'' }}"
+            >
+        </div>
+
+        <!-- Botões -->
+        <div class="flex justify-between items-center pt-4">
+
+            <a href="{% url 'fornecedores' %}" 
+               class="text-gray-600 hover:text-orange-600 transition">
+                ← Voltar
+            </a>
+
+            <button 
+                type="submit"
+                class="bg-orange-600 text-white px-6 py-2 rounded-md hover:bg-orange-700 transition">
+                Salvar Fornecedor
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

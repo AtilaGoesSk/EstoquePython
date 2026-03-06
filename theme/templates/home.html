@@ -11,13 +11,21 @@
     </h1>
 
     <p class="mb-8 text-lg">
-        Visualize e gerencie seus produtos de forma simples.
+        Simplifique a gestão de produtos e fornecedores.
     </p>
 
-    <a href="/produtos/" 
+    <div class="flex gap-4 justify-center items-center">
+
+    <a href="{% url 'produtos' %}" 
        class="bg-gray-800 text-white px-8 py-3 rounded-lg hover:bg-orange-600 transition">
         Ver Produtos
     </a>
+    <a href="{% url 'fornecedores' %}" 
+       class="bg-gray-800 text-white px-8 py-3 rounded-lg hover:bg-orange-600 transition">
+        Ver Fornecedores
+    </a>    
+    </div>
+    
 
 </section>
 

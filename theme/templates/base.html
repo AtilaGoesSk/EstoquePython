@@ -19,15 +19,14 @@
             </div>
 
             <nav class="space-x-6 hidden md:flex">
-                <a href="/" class="hover:text-orange-400">Painel</a>
-                <a href="produtos/" class="hover:text-orange-400">Produtos</a>
+                <a href="{% url 'home' %}" class="hover:text-orange-400">Painel</a>
+                <a href="{% url 'produtos' %}" class="hover:text-orange-400">Produtos</a>
+                <a href="{% url 'fornecedores' %}" class="hover:text-orange-400">Fornecedores</a>
             </nav>
 
-            <a href="/produtos/novo/" 
-               class="border-2 px-4 py-1 rounded-l-lg rounded-tr-lg hover:bg-orange-600 transition">
-               Criar Produto
+            <a 
+               class="border-0 px-4 py-1 rounded-l-lg rounded-tr-lg ">
             </a>
-
         </div>
     </header>
 
