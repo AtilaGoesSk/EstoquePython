@@ -19,6 +19,7 @@ def novo_produto(request):
 
     if request.method == 'POST':
         nome = request.POST.get('nome')
+        descricao = request.POST.get('descricao')
         preco = request.POST.get('preco')
         quantidade = request.POST.get('quantidade')
         fornecedor_id = request.POST.get('fornecedor')
@@ -29,6 +30,7 @@ def novo_produto(request):
 
         Produto.objects.create(
             nome=nome,
+            descricao=descricao,  
             preco=preco,
             quantidade=quantidade,
             fornecedor=fornecedor
@@ -46,6 +48,23 @@ def editar_produto(request, id):
 
     produto = get_object_or_404(Produto, id=id)
     fornecedores = Fornecedor.objects.all()
+
+    if request.method == "POST":
+        produto.nome = request.POST.get("nome")
+        produto.descricao = request.POST.get("descricao")
+        produto.preco = request.POST.get("preco")
+        produto.quantidade = request.POST.get("quantidade")
+
+        fornecedor_id = request.POST.get("fornecedor")
+
+        if fornecedor_id:
+            produto.fornecedor = Fornecedor.objects.get(id=fornecedor_id)
+        else:
+            produto.fornecedor = None
+
+        produto.save()
+
+        return redirect('produtos')
 
     return render(request, 'novo_produto.html', {
         'produto': produto,

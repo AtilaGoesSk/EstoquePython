@@ -60,7 +60,7 @@
                 placeholder="Ex: 199.90"
                 class="w-full px-4 py-2 rounded-md border placeholder-gray-500 text-gray-900 border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-500"
                 required
-                value="{{ produto.preco|default:'' }}"
+                value="{{ produto.preco|stringformat:'s' }}"
             >
         </div>
 
@@ -88,7 +88,7 @@
 
             {% for fornecedor in fornecedores %}
             <option value="{{ fornecedor.id }}"
-            {% if produto.fornecedor.id == fornecedor.id %}selected{% endif %}
+            {% if produto.fornecedor and produto.fornecedor.id == fornecedor.id %}selected{% endif %}
             >
             {{ fornecedor.nome }}
             </option>
