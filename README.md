@@ -69,3 +69,12 @@ O foco principal foi entender e aplicar conceitos como:
 **Átila Conceição de Goes**
 
 Estudante de tecnologia e desenvolvedor em formação, com interesse em **desenvolvimento web, backend e criação de software**.
+
+
+## Material de Apoio
+
+[Slide da apresentação](https://www.canva.com/design/DAHDOG3Klfc/O8heA2ViSVB2q4v-4qHhBg/view?utm_content=DAHDOG3Klfc&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h04c3573fd3)
+
+**Link da aplicação**
+
+[EstoquePython](https://estoquepython.onrender.com)
